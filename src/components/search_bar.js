@@ -9,11 +9,10 @@ class SearchBar extends Component{
 
   render() { //butinas render and return jsx klasei
     return (
-      <div>
+      <div className="search-bar">
         <input
           value={this.state.term}
           onChange={(event) => this.setState({ term: event.target.value})} />
-        Value of the input: {this.state.term}
       </div>
     )
   }
