@@ -21,7 +21,11 @@ class App extends Component {
       selectedVideo: null
     };
 
-    YTSearch({key: API_KEY, term: 'chess'}, (videos_array) => {
+    this.videoSearch('digimons');
+  }
+
+  videoSearch(term) {
+    YTSearch({key: API_KEY, term: term}, (videos_array) => {
       this.setState({
         videos: videos_array,
         selectedVideo: videos_array[0]}); // trumpiau: videos: videos ----> videos (kai pavinimai sutmapa)
@@ -31,7 +35,7 @@ class App extends Component {
   render() { //butinas render and return jsx klasei
     return (
       <div>
-        <SearchBar />
+        <SearchBar onSearchTermChange={term => this.videoSearch(term)} />
         <VideoDetail video={this.state.selectedVideo}/>
         <VideoList
           onVideoSelect = {selectedVideo => this.setState({selectedVideo})}
